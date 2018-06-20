@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!--This application does the following:
+    - In the controller: Sets the value for a variable that is used multiple times in the view (see below)
+    - In the view: displays multiple ways of rendering a variable
+    - In the view: passes a variable from HTML to Javascript
+     - In the controller: Creates multiple people and stores them to a database.
+     - In the view: Iterates through the list of people in the database and displays their first names
+
+     Paths exist for the default route (displaying all information) and adding two people to the database.
+     This can be done over and over again, as there are no checks for uniqueness.
+    -->
+    <p th:text="${theName}"></p>
+    <p th:text="'Your name is:'+${theName}"></p>
+    <p th:inline="text">Your name is: [[${theName}]]</p>
+    <p id="showName"></p>
+    <button  th:onclick="'javascript:sayHello(\'' + ${theName} + '\');'">Say Hello</button>
+    <script src="/js/helloscript.js"></script>
+
+
+    <div th:each="eachPerson:${thePeople}">
+        <p th:text="${eachPerson.firstName}"></p>
+    </div>
+</body>
+</html>
