@@ -6,6 +6,6 @@
 
 body{
     background:url("/img/car.jpg");
-    background-size:70%;
+    background-position:center;
     color:white;
 }
